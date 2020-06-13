@@ -12,7 +12,7 @@ namespace EPIC_RPG_Bot
 
             for (int i = 0; i < Environment.Iterations; i++)
             {
-                new RpgAxe(Cooldowns.RpgAxeLastCallTime);
+                RpgAxe.MakeRequest();
             }
         }
     }

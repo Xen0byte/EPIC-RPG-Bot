@@ -1,5 +1,4 @@
 ﻿using Flurl;
-using System;
 
 namespace EPIC_RPG_Bot
 {
@@ -18,10 +17,5 @@ namespace EPIC_RPG_Bot
         {
             return Host;
         }
-    }
-
-    internal static class Cooldowns
-    {
-        internal static DateTime RpgAxeLastCallTime = DateTime.MinValue;
     }
 }

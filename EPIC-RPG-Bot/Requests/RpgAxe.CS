@@ -1,32 +1,46 @@
-﻿using static EPIC_RPG_Bot.Cooldowns;
+﻿using Flurl.Http;
 using System;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace EPIC_RPG_Bot.Requests
 {
-    internal class RpgAxe : BaseRequest
+    internal static class RpgAxe
     {
-        internal RpgAxe(DateTime lastCall, string command = "rpg axe", int cooldownInSeconds = 305) : base(lastCall, command, cooldownInSeconds) { }
+        private static readonly string Command = "rpg axe";
+        private static readonly int CooldownInSeconds = 305;
 
-        internal override async void Call(DateTime lastCall, int cooldownInSeconds)
+        private static dynamic Response;
+        private static DateTime ThisCallTime;
+        private static DateTime LastCallTime;
+        private static int SecondsElapsed;
+
+        internal static async void MakeRequest()
         {
-            base.Call(lastCall, cooldownInSeconds);
+            string JsonData = new StringBuilder()
+                .Append("{").Append($"'content': '{Command}',")
+                .Append($"'nonce': '{Helpers.RandomIntAsString()}',")
+                .Append("'tts': 'false'").Append("}").ToString();
 
-            int secondsElapsed = 0;
+            if (LastCallTime != DateTime.MinValue)
+                SecondsElapsed = Convert.ToInt32((DateTime.Now - LastCallTime).TotalSeconds);
 
-            if (lastCall != DateTime.MinValue)
+            if ((SecondsElapsed > CooldownInSeconds) || (LastCallTime == DateTime.MinValue))
             {
-                TimeSpan timeSpan = DateTime.Now - lastCall;
-                secondsElapsed = Convert.ToInt32(timeSpan.TotalSeconds);
+                Response = await Environment.GetHost().
+                    WithHeader("Authorization", PersistentHeaders.GetAuthorization()).
+                    PostJsonAsync(JsonData).
+                    ReceiveJson();
+
+                ThisCallTime = DateTime.Now;
+                LastCallTime = DateTime.Now;
+                SecondsElapsed = 0;
+
+                Console.WriteLine(Response.ToString() + System.Environment.NewLine);
             }
 
-            if ((secondsElapsed > cooldownInSeconds) || (lastCall != DateTime.MinValue))
-                RpgAxeLastCallTime = DateTime.Now;
-            else
-            {
-                int timeRemainingInMillisecond = (cooldownInSeconds - secondsElapsed) * 1000;
-                await Task.Delay(timeRemainingInMillisecond);
-            }
+            if (SecondsElapsed < CooldownInSeconds)
+                await Task.Delay((CooldownInSeconds - SecondsElapsed) * 1000);
         }
     }
 }
