@@ -1,7 +1,7 @@
-﻿using EPIC_RPG_Bot.Requests;
+﻿using BOT.Requests;
 using System;
 
-namespace EPIC_RPG_Bot
+namespace BOT
 {
     class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EPIC_RPG_Bot
+namespace BOT
 {
     internal static class Helpers
     {
