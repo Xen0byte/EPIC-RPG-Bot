@@ -1,5 +1,6 @@
 ﻿using BOT.Requests;
 using System;
+using System.Diagnostics;
 
 namespace BOT
 {
@@ -9,13 +10,19 @@ namespace BOT
         {
             Environment.Host = "https://discord.com/api/v6/channels/708660683063033886/messages";
             Headers.Authorization = "MTExNTU0MTAyNzMwNzQ3OTA0.XuUIHQ.-TcMSpKsEgByx4bUNQUXwwErzE4";
-            Environment.Iterations = 500;
 
-            for (int i = 0; i < Environment.Iterations; i++)
+            Environment.RuntimeInHours = 12;
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            while (stopwatch.Elapsed < TimeSpan.FromHours(Environment.RuntimeInHours))
             {
-                Console.WriteLine($"Iteration: {i + 1}");
+                Console.WriteLine($"{stopwatch.Elapsed} Elapsed :: {TimeSpan.FromHours(Environment.RuntimeInHours) - stopwatch.Elapsed} Remaining");
                 RPGAxe.MakeRequest();
             }
+
+            stopwatch.Stop();
         }
     }
 }

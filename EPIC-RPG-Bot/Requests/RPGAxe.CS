@@ -40,7 +40,7 @@ namespace BOT.Requests
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
 
-                Console.WriteLine(Response + System.Environment.NewLine);
+                Console.WriteLine(Response.Content + System.Environment.NewLine);
             }
 
             // if the cooldown has not finished resetting, wait for the remainder of the time
