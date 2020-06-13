@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BOT.Requests
@@ -40,7 +41,12 @@ namespace BOT.Requests
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
 
-                Console.WriteLine($"{Utility.Runtime.Elapsed} Elapsed :: {TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining");
+                Console.WriteLine("RPG AXE");
+                Console.WriteLine(new StringBuilder()
+                    .Append($"{DateTime.Now} :: ")
+                    .Append($"{Utility.Runtime.Elapsed} Elapsed :: ")
+                    .Append($"{TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
+                    .ToString());
                 Console.WriteLine(Response.Content + System.Environment.NewLine);
             }
 

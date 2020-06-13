@@ -23,5 +23,8 @@ namespace BOT
 
             Utility.Runtime.Stop();
         }
+
+        // TODO: Put Config In External File
+        // TODO: Stop Going To Jail
     }
 }
