@@ -40,6 +40,7 @@ namespace BOT.Requests
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
 
+                Console.WriteLine($"{Utility.Runtime.Elapsed} Elapsed :: {TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining");
                 Console.WriteLine(Response.Content + System.Environment.NewLine);
             }
 

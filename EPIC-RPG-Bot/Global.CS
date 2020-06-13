@@ -1,4 +1,6 @@
-﻿namespace BOT
+﻿using System.Diagnostics;
+
+namespace BOT
 {
     internal static class Environment
     {
@@ -9,5 +11,10 @@
     internal static class Headers
     {
         internal static string Authorization { get; set; }
+    }
+
+    internal static class Utility
+    {
+        internal static Stopwatch Runtime = new Stopwatch();
     }
 }
