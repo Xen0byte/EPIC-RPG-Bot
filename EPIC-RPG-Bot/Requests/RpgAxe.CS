@@ -12,10 +12,15 @@ namespace EPIC_RPG_Bot.Requests
         {
             base.Call(lastCall, cooldownInSeconds);
 
-            TimeSpan timeSpan = DateTime.Now - lastCall;
-            int secondsElapsed = Convert.ToInt32(timeSpan.TotalSeconds);
+            int secondsElapsed = 0;
 
-            if (secondsElapsed > cooldownInSeconds)
+            if (lastCall != DateTime.MinValue)
+            {
+                TimeSpan timeSpan = DateTime.Now - lastCall;
+                secondsElapsed = Convert.ToInt32(timeSpan.TotalSeconds);
+            }
+
+            if ((secondsElapsed > cooldownInSeconds) || (lastCall != DateTime.MinValue))
                 RpgAxeLastCallTime = DateTime.Now;
             else
             {

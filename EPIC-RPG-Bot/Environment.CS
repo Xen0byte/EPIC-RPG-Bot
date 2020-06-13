@@ -22,6 +22,6 @@ namespace EPIC_RPG_Bot
 
     internal static class Cooldowns
     {
-        internal static DateTime RpgAxeLastCallTime;
+        internal static DateTime RpgAxeLastCallTime = DateTime.MinValue;
     }
 }

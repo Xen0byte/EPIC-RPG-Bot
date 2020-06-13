@@ -23,10 +23,15 @@ namespace EPIC_RPG_Bot.Requests
 
         internal virtual async void Call(DateTime lastCall, int cooldownInSeconds)
         {
-            TimeSpan timeSpan = DateTime.Now - lastCall;
-            int secondsElapsed = Convert.ToInt32(timeSpan.TotalSeconds);
+            int secondsElapsed = 0;
 
-            if (secondsElapsed > cooldownInSeconds)
+            if (lastCall != DateTime.MinValue)
+            {
+                TimeSpan timeSpan = DateTime.Now - lastCall;
+                secondsElapsed = Convert.ToInt32(timeSpan.TotalSeconds);
+            }
+            
+            if ((secondsElapsed > cooldownInSeconds) || (lastCall != DateTime.MinValue))
             {
                 Response = await Environment.GetHost().
                     WithHeader("Authorization", PersistentHeaders.GetAuthorization()).
