@@ -6,4 +6,9 @@
     <RootNamespace>EPIC_RPG_Bot</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Flurl" Version="2.8.2" />
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
+  </ItemGroup>
+
 </Project>
