@@ -1,4 +1,5 @@
 ﻿using EPIC_RPG_Bot.Requests;
+using System;
 
 namespace EPIC_RPG_Bot
 {
@@ -6,13 +7,14 @@ namespace EPIC_RPG_Bot
     {
         static void Main(string[] args)
         {
-            Environment.SetHost("708660683063033886");
-            PersistentHeaders.SetAuthorization("MTExNTU0MTAyNzMwNzQ3OTA0.XuUIHQ.-TcMSpKsEgByx4bUNQUXwwErzE4");
+            Environment.Host = "https://discord.com/api/v6/channels/708660683063033886/messages";
+            Headers.Authorization = "MTExNTU0MTAyNzMwNzQ3OTA0.XuUIHQ.-TcMSpKsEgByx4bUNQUXwwErzE4";
             Environment.Iterations = 500;
 
             for (int i = 0; i < Environment.Iterations; i++)
             {
-                RpgAxe.MakeRequest();
+                Console.WriteLine($"Iteration: {i + 1}");
+                RPGAxe.MakeRequest();
             }
         }
     }
