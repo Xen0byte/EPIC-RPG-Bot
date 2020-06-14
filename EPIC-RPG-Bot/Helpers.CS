@@ -13,6 +13,9 @@ namespace BOT
 
         internal static void KeepOuttaJail()
         {
+            Utility.Runtime.Stop();
+
+            /*
             var client = new RestClient(Environment.Host);
 
             var request = new RestRequest(Method.GET)
@@ -22,12 +25,13 @@ namespace BOT
 
             var response = client.Execute(request);
 
-            string guardURL;
+            // string guardURL;
 
             foreach (var message in response.Content)
             {
-                if ...
+                // ...
             }
+            */
         }
     }
 }
