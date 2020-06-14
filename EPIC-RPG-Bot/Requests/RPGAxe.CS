@@ -8,7 +8,7 @@ namespace BOT.Requests
     internal static class RPGAxe
     {
         private static readonly string Command = "rpg axe";
-        private static readonly int CooldownInSeconds = 305;
+        private static readonly int CooldownInSeconds = 310;
 
         private static IRestResponse Response;
         private static DateTime LastCallTime;
@@ -30,13 +30,17 @@ namespace BOT.Requests
             if ((SecondsElapsed > CooldownInSeconds) || (LastCallTime == DateTime.MinValue))
             {
                 var client = new RestClient(Environment.Host);
+                client.Timeout = 5000;
 
                 var request = new RestRequest(Method.POST)
                     .AddHeader("Accept", "application/json")
                     .AddHeader("Authorization", Headers.Authorization)
                     .AddJsonBody(JsonData);
-
+                
                 Response = client.Execute(request);
+                
+                if (Response.ResponseStatus == ResponseStatus.TimedOut)
+                    Helpers.KeepOuttaJail();
 
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
