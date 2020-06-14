@@ -1,7 +1,7 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Text;
-using System.Text.Json;
 
 namespace BOT
 {
@@ -31,21 +31,22 @@ namespace BOT
 
         internal static void KeepOuttaJail()
         {
-            var message = GetLatestMessage();
+            var message = GetMessages(1);
             Console.WriteLine(message);
         }
 
-        internal static Message GetLatestMessage()
+        internal static object GetMessages(int amount)
         {
             var client = new RestClient(Environment.Host);
 
             var request = new RestRequest(Method.GET)
-                .AddParameter("limit", "1")
+                .AddParameter("limit", amount)
                 .AddHeader("Accept", "application/json")
                 .AddHeader("Authorization", Headers.Authorization);
 
             var response = client.Execute(request);
-            return JsonSerializer.Deserialize<Message>(response.Content);
+
+            return JsonConvert.DeserializeObject(response.Content);
         }
     }
 }
