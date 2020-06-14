@@ -1,5 +1,7 @@
 ﻿using RestSharp;
 using System;
+using System.Text;
+using System.Text.Json;
 
 namespace BOT
 {
@@ -11,27 +13,39 @@ namespace BOT
             return random.Next(int.MaxValue).ToString();
         }
 
+        internal static void PrintRuntimeStats()
+        {
+            Console.WriteLine(new StringBuilder()
+                .Append($"{Utility.Runtime.Elapsed} Elapsed :: ")
+                .Append($"{TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
+                .ToString());
+        }
+
+        internal static void PrintDashes(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+                Console.Write("-");
+
+            Console.WriteLine();
+        }
+
         internal static void KeepOuttaJail()
         {
-            Utility.Runtime.Stop();
+            var message = GetLatestMessage();
+            Console.WriteLine(message);
+        }
 
-            /*
+        internal static Message GetLatestMessage()
+        {
             var client = new RestClient(Environment.Host);
 
             var request = new RestRequest(Method.GET)
-                .AddParameter("limit", "10")
+                .AddParameter("limit", "1")
                 .AddHeader("Accept", "application/json")
                 .AddHeader("Authorization", Headers.Authorization);
 
             var response = client.Execute(request);
-
-            // string guardURL;
-
-            foreach (var message in response.Content)
-            {
-                // ...
-            }
-            */
+            return JsonSerializer.Deserialize<Message>(response.Content);
         }
     }
 }

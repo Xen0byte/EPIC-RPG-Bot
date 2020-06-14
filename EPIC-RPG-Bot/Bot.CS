@@ -1,10 +1,9 @@
 ﻿using BOT.Requests;
 using System;
-using System.Diagnostics;
 
 namespace BOT
 {
-    class Program
+    class Bot
     {
         static void Main()
         {

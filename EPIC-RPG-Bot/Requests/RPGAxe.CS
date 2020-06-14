@@ -1,14 +1,13 @@
 ﻿using RestSharp;
 using System;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BOT.Requests
 {
     internal static class RPGAxe
     {
-        private static readonly string Command = "rpg axe";
-        private static readonly int CooldownInSeconds = 310;
+        private static readonly string Command = "RPG AXE";
+        private static readonly int CooldownInSeconds = 300 + Utility.CooldownBuffer;
 
         private static IRestResponse Response;
         private static DateTime LastCallTime;
@@ -30,28 +29,24 @@ namespace BOT.Requests
             if ((SecondsElapsed > CooldownInSeconds) || (LastCallTime == DateTime.MinValue))
             {
                 var client = new RestClient(Environment.Host);
-                client.Timeout = 5000;
 
                 var request = new RestRequest(Method.POST)
                     .AddHeader("Accept", "application/json")
                     .AddHeader("Authorization", Headers.Authorization)
                     .AddJsonBody(JsonData);
-                
+
+                Console.WriteLine($"{DateTime.Now} :: {Command} Start");
                 Response = client.Execute(request);
-                
-                if (Response.ResponseStatus == ResponseStatus.TimedOut)
-                    Helpers.KeepOuttaJail();
+                Console.WriteLine($"{DateTime.Now} :: {Command} {Response.ResponseStatus}");
+
+                Helpers.KeepOuttaJail();
 
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
 
-                Console.WriteLine("RPG AXE");
-                Console.WriteLine(new StringBuilder()
-                    .Append($"{DateTime.Now} :: ")
-                    .Append($"{Utility.Runtime.Elapsed} Elapsed :: ")
-                    .Append($"{TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
-                    .ToString());
-                Console.WriteLine(Response.Content + System.Environment.NewLine);
+                Helpers.PrintRuntimeStats();
+                Console.WriteLine(Response.Content);
+                Helpers.PrintDashes(100);
             }
 
             // if the cooldown has not finished resetting, wait for the remainder of the time
