@@ -45,7 +45,8 @@ namespace BOT.Requests
                 SecondsElapsed = 0;
 
                 Helpers.PrintRuntimeStats();
-                Console.WriteLine(Response.Content);
+                if (Environment.DebugMode)
+                    Console.WriteLine(System.Environment.NewLine + Response.Content);
                 Helpers.PrintDashes(100);
             }
 

@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace BOT
@@ -16,7 +17,8 @@ namespace BOT
         internal static void PrintRuntimeStats()
         {
             Console.WriteLine(new StringBuilder()
-                .Append($"{Utility.Runtime.Elapsed} Elapsed :: ")
+                .Append($"{DateTime.Now} :: {Utility.Runtime.Elapsed} Elapsed")
+                .Append(" & ")
                 .Append($"{TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
                 .ToString());
         }
@@ -29,13 +31,7 @@ namespace BOT
             Console.WriteLine();
         }
 
-        internal static void KeepOuttaJail()
-        {
-            var message = GetMessages(1);
-            Console.WriteLine(message);
-        }
-
-        internal static object GetMessages(int amount)
+        internal static Message[] GetMessages(int amount)
         {
             var client = new RestClient(Environment.Host);
 
@@ -46,7 +42,37 @@ namespace BOT
 
             var response = client.Execute(request);
 
-            return JsonConvert.DeserializeObject(response.Content);
+            return JsonConvert.DeserializeObject<Message[]>(response.Content);
+        }
+
+        internal static void KeepOuttaJail()
+        {
+            var lastMessage = GetMessages(1)[0];
+
+            if (Environment.DebugMode)
+                Console.WriteLine(System.Environment.NewLine + ObjectDumper.Dump(lastMessage));
+
+            if (lastMessage.Content.Contains("EPIC GUARD"))
+            {
+                var answers = new List<string> { "NORMIE FISH", "WOLF SKIN", "LIFE POTION", "ZOMBIE EYE", "COIN" };
+                var random = new Random();
+                var randomAnswer = random.Next(answers.Count);
+
+                // TODO: Create Classes With Image File Hashes & Get Rid Of This Ugly Code
+
+                var JsonData = new { content = randomAnswer, nonce = Helpers.RandomIntAsString(), tts = false };
+
+                var client = new RestClient(Environment.Host);
+
+                var request = new RestRequest(Method.POST)
+                    .AddHeader("Accept", "application/json")
+                    .AddHeader("Authorization", Headers.Authorization)
+                    .AddJsonBody(JsonData);
+
+                Console.WriteLine($"{DateTime.Now} :: EPIC GUARD Start");
+                var response = client.Execute(request);
+                Console.WriteLine($"{DateTime.Now} :: EPIC GUARD {response.ResponseStatus}");
+            }
         }
     }
 }

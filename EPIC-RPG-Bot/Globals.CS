@@ -4,6 +4,7 @@ namespace BOT
 {
     internal static class Environment
     {
+        internal static bool DebugMode { get; set; }
         internal static string Host { get; set; }
         internal static int RuntimeInHours { get; set; }
     }

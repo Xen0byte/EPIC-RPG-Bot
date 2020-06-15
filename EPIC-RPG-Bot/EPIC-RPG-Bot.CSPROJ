@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ObjectDumper.NET" Version="2.5.20155.1" />
     <PackageReference Include="RestSharp" Version="106.11.4" />
   </ItemGroup>
 
