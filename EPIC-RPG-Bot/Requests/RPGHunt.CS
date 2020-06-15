@@ -6,7 +6,7 @@ namespace BOT.Requests
 {
     public static class RPGHunt
     {
-        private static string Command = "RPG HUNT";
+        private static readonly string Command = "RPG HUNT";
         private static readonly int CooldownInSeconds = 120 + Utility.CooldownBuffer;
 
         private static IRestResponse Response;
