@@ -4,17 +4,19 @@ using System.Threading.Tasks;
 
 namespace BOT.Requests
 {
-    public static class RPGAxe
+    public static class RPGWork
     {
-        private static readonly string Command = "RPG AXE";
+        private static string Command;
         private static readonly int CooldownInSeconds = 300 + Utility.CooldownBuffer;
 
         private static IRestResponse Response;
         private static DateTime LastCallTime;
         private static int SecondsElapsed;
 
-        public static async void MakeRequest()
+        public static async void MakeRequest(string command)
         {
+            Command = command;
+
             // resets response from previous call, if any
             if (Response != null) Response = null;
 

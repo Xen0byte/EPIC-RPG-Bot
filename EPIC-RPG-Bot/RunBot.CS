@@ -17,8 +17,7 @@ namespace BOT
 
             while (Utility.Runtime.Elapsed < TimeSpan.FromHours(ENV.RuntimeInHours))
             {
-                
-                RPGAxe.MakeRequest();
+                RPGWork.MakeRequest("RPG LADDER");
             }
 
             Utility.Runtime.Stop();
