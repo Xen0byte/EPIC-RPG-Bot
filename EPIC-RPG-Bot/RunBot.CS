@@ -1,5 +1,6 @@
 ﻿using BOT.Requests;
 using System;
+using System.Threading;
 
 namespace BOT
 {
@@ -18,6 +19,7 @@ namespace BOT
             while (Utility.Runtime.Elapsed < TimeSpan.FromHours(ENV.RuntimeInHours))
             {
                 RPGWork.MakeRequest("RPG LADDER");
+                Thread.Sleep(1000);
                 RPGHunt.MakeRequest();
             }
 
