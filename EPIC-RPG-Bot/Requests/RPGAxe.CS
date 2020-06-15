@@ -28,7 +28,7 @@ namespace BOT.Requests
             //  if the cooldown has reset or if this is the first iteration, make the API call
             if ((SecondsElapsed > CooldownInSeconds) || (LastCallTime == DateTime.MinValue))
             {
-                var client = new RestClient(Environment.Host);
+                var client = new RestClient(ENV.Host);
 
                 var request = new RestRequest(Method.POST)
                     .AddHeader("Accept", "application/json")
@@ -42,7 +42,7 @@ namespace BOT.Requests
                 Console.WriteLine($"{DateTime.Now} :: {Command} {Response.ResponseStatus}");
                 Helpers.PrintRuntimeStats();
 
-                if (Environment.DebugMode)
+                if (ENV.DebugMode)
                     Helpers.PrintEnclosedInNewLines(Response.Content);
 
                 Safety.KeepOuttaJail();

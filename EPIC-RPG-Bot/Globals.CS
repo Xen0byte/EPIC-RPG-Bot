@@ -2,7 +2,7 @@
 
 namespace BOT
 {
-    public static class Environment
+    public static class ENV
     {
         public static bool DebugMode { get; set; }
         public static string Host { get; set; }

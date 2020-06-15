@@ -11,8 +11,8 @@ namespace BOT
         {
             var lastMessage = GetMessages(1)[0];
 
-            if (Environment.DebugMode)
-                Console.WriteLine(System.Environment.NewLine + ObjectDumper.Dump(lastMessage));
+            if (ENV.DebugMode)
+                Console.Write(Environment.NewLine + ObjectDumper.Dump(lastMessage));
 
             if (lastMessage.Content.Contains("EPIC GUARD"))
             {
@@ -24,25 +24,27 @@ namespace BOT
 
                 var JsonData = new { content = randomAnswer, nonce = Helpers.RandomIntAsString(), tts = false };
 
-                var client = new RestClient(Environment.Host);
+                var client = new RestClient(ENV.Host);
 
                 var request = new RestRequest(Method.POST)
                     .AddHeader("Accept", "application/json")
                     .AddHeader("Authorization", Headers.Authorization)
                     .AddJsonBody(JsonData);
 
-                Console.WriteLine($"{DateTime.Now} :: EPIC GUARD Start");
+                Console.WriteLine(Environment.NewLine + $"{DateTime.Now} :: EPIC GUARD Start");
+
                 var response = client.Execute(request);
+
                 Console.WriteLine($"{DateTime.Now} :: EPIC GUARD {response.ResponseStatus}");
 
-                if (Environment.DebugMode)
-                    Helpers.PrintWithoutTrailingNewLines(response.Content);
+                if (ENV.DebugMode)
+                    Console.WriteLine(Environment.NewLine + response.Content);
             }
         }
 
         public static Message[] GetMessages(int amount)
         {
-            var client = new RestClient(Environment.Host);
+            var client = new RestClient(ENV.Host);
 
             var request = new RestRequest(Method.GET)
                 .AddParameter("limit", amount)

@@ -16,7 +16,7 @@ namespace BOT
             Console.WriteLine(new StringBuilder()
                 .Append($"{DateTime.Now} :: {Utility.Runtime.Elapsed} Elapsed")
                 .Append(" & ")
-                .Append($"{TimeSpan.FromHours(Environment.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
+                .Append($"{TimeSpan.FromHours(ENV.RuntimeInHours) - Utility.Runtime.Elapsed} Remaining")
                 .ToString());
         }
 
@@ -30,15 +30,9 @@ namespace BOT
 
         public static void PrintEnclosedInNewLines(string content)
         {
-            Console.Write(System.Environment.NewLine);
+            Console.Write(Environment.NewLine);
             Console.Write(content);
-            Console.Write(System.Environment.NewLine);
-        }
-
-        // needed because ObjectDumper.NET adds an unnecessary new line at the end of the dump
-        public static void PrintWithoutTrailingNewLines(string content)
-        {
-            Console.WriteLine(content.Remove(content.TrimEnd().LastIndexOf(System.Environment.NewLine)));
+            Console.Write(Environment.NewLine);
         }
     }
 }
