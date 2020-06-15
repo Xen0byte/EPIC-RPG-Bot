@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BOT.Requests
 {
-    internal static class RPGAxe
+    public static class RPGAxe
     {
         private static readonly string Command = "RPG AXE";
         private static readonly int CooldownInSeconds = 300 + Utility.CooldownBuffer;
@@ -13,7 +13,7 @@ namespace BOT.Requests
         private static DateTime LastCallTime;
         private static int SecondsElapsed;
 
-        internal static async void MakeRequest()
+        public static async void MakeRequest()
         {
             // resets response from previous call, if any
             if (Response != null) Response = null;

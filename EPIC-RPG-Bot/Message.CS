@@ -6,74 +6,74 @@ namespace BOT
     // 1) Copy The JSON Data To The Clipboard 
     // 2) Edit > Paste Special > Paste JSON As Classes 
 
-    internal class Message
+    public class Message
     {
-        internal string ID { get; set; }
-        internal int Type { get; set; }
-        internal string Content { get; set; }
-        internal string Channel_ID { get; set; }
-        internal Author Author { get; set; }
-        internal Attachment[] Attachments { get; set; }
-        internal Embed[] Embeds { get; set; }
-        internal Mention[] Mentions { get; set; }
-        internal object[] Mention_Roles { get; set; }
-        internal bool Pinned { get; set; }
-        internal bool Mention_Everyone { get; set; }
-        internal bool TTS { get; set; }
-        internal DateTime Timestamp { get; set; }
-        internal object Edited_Timestamp { get; set; }
-        internal int Flags { get; set; }
+        public string ID { get; set; }
+        public int Type { get; set; }
+        public string Content { get; set; }
+        public string Channel_ID { get; set; }
+        public Author Author { get; set; }
+        public Attachment[] Attachments { get; set; }
+        public Embed[] Embeds { get; set; }
+        public Mention[] Mentions { get; set; }
+        public object[] Mention_Roles { get; set; }
+        public bool Pinned { get; set; }
+        public bool Mention_Everyone { get; set; }
+        public bool TTS { get; set; }
+        public DateTime Timestamp { get; set; }
+        public object Edited_Timestamp { get; set; }
+        public int Flags { get; set; }
     }
 
-    internal class Author
+    public class Author
     {
-        internal string ID { get; set; }
-        internal string Name { get; set; }
-        internal string Username { get; set; }
-        internal string Avatar { get; set; }
-        internal string Discriminator { get; set; }
-        internal int Public_Flags { get; set; }
-        internal bool Bot { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public string Avatar { get; set; }
+        public string Discriminator { get; set; }
+        public int Public_Flags { get; set; }
+        public bool Bot { get; set; }
     }
 
-    internal class Attachment
+    public class Attachment
     {
-        internal string ID { get; set; }
-        internal string Filename { get; set; }
-        internal int Size { get; set; }
-        internal string URL { get; set; }
-        internal string Proxy_URL { get; set; }
-        internal int Width { get; set; }
-        internal int Height { get; set; }
+        public string ID { get; set; }
+        public string Filename { get; set; }
+        public int Size { get; set; }
+        public string URL { get; set; }
+        public string Proxy_URL { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 
-    internal class Embed
+    public class Embed
     {
-        internal string Type { get; set; }
-        internal int Color { get; set; }
-        internal Field[] Fields { get; set; }
-        internal Author Author { get; set; }
-        internal Footer Footer { get; set; }
+        public string Type { get; set; }
+        public int Color { get; set; }
+        public Field[] Fields { get; set; }
+        public Author Author { get; set; }
+        public Footer Footer { get; set; }
     }
 
-    internal class Mention
+    public class Mention
     {
-        internal string ID { get; set; }
-        internal string Username { get; set; }
-        internal string Avatar { get; set; }
-        internal string Discriminator { get; set; }
-        internal int Public_Flags { get; set; }
+        public string ID { get; set; }
+        public string Username { get; set; }
+        public string Avatar { get; set; }
+        public string Discriminator { get; set; }
+        public int Public_Flags { get; set; }
     }
 
-    internal class Footer
+    public class Footer
     {
-        internal string Text { get; set; }
+        public string Text { get; set; }
     }
 
-    internal class Field
+    public class Field
     {
-        internal string Name { get; set; }
-        internal string Value { get; set; }
-        internal bool Inline { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public bool Inline { get; set; }
     }
 }

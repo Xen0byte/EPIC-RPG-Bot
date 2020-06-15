@@ -2,21 +2,21 @@
 
 namespace BOT
 {
-    internal static class Environment
+    public static class Environment
     {
-        internal static bool DebugMode { get; set; }
-        internal static string Host { get; set; }
-        internal static int RuntimeInHours { get; set; }
+        public static bool DebugMode { get; set; }
+        public static string Host { get; set; }
+        public static int RuntimeInHours { get; set; }
     }
 
-    internal static class Headers
+    public static class Headers
     {
-        internal static string Authorization { get; set; }
+        public static string Authorization { get; set; }
     }
 
-    internal static class Utility
+    public static class Utility
     {
-        internal static Stopwatch Runtime = new Stopwatch();
-        internal static int CooldownBuffer = 10;
+        public static Stopwatch Runtime = new Stopwatch();
+        public static int CooldownBuffer = 10;
     }
 }

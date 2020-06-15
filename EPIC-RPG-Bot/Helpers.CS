@@ -6,15 +6,15 @@ using System.Text;
 
 namespace BOT
 {
-    internal static class Helpers
+    public static class Helpers
     {
-        internal static string RandomIntAsString()
+        public static string RandomIntAsString()
         {
             Random random = new Random();
             return random.Next(int.MaxValue).ToString();
         }
 
-        internal static void PrintRuntimeStats()
+        public static void PrintRuntimeStats()
         {
             Console.WriteLine(new StringBuilder()
                 .Append($"{DateTime.Now} :: {Utility.Runtime.Elapsed} Elapsed")
@@ -23,7 +23,7 @@ namespace BOT
                 .ToString());
         }
 
-        internal static void PrintDashes(int amount)
+        public static void PrintDashes(int amount)
         {
             for (int i = 0; i < amount; i++)
                 Console.Write("-");
@@ -31,7 +31,7 @@ namespace BOT
             Console.WriteLine();
         }
 
-        internal static Message[] GetMessages(int amount)
+        public static Message[] GetMessages(int amount)
         {
             var client = new RestClient(Environment.Host);
 
@@ -45,7 +45,7 @@ namespace BOT
             return JsonConvert.DeserializeObject<Message[]>(response.Content);
         }
 
-        internal static void KeepOuttaJail()
+        public static void KeepOuttaJail()
         {
             var lastMessage = GetMessages(1)[0];
 
