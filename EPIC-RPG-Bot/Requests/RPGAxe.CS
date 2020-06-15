@@ -39,14 +39,15 @@ namespace BOT.Requests
                 Response = client.Execute(request);
                 Console.WriteLine($"{DateTime.Now} :: {Command} {Response.ResponseStatus}");
 
-                Helpers.KeepOuttaJail();
+                Helpers.PrintRuntimeStats();
+                if (Environment.DebugMode)
+                    Helpers.PrintEnclosedInNewLines(Response.Content);
+
+                Safety.KeepOuttaJail();
 
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
 
-                Helpers.PrintRuntimeStats();
-                if (Environment.DebugMode)
-                    Console.WriteLine(System.Environment.NewLine + Response.Content);
                 Helpers.PrintDashes(100);
             }
 
