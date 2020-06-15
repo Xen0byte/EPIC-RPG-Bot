@@ -36,10 +36,12 @@ namespace BOT.Requests
                     .AddJsonBody(JsonData);
 
                 Console.WriteLine($"{DateTime.Now} :: {Command} Start");
-                Response = client.Execute(request);
-                Console.WriteLine($"{DateTime.Now} :: {Command} {Response.ResponseStatus}");
 
+                Response = client.Execute(request);
+
+                Console.WriteLine($"{DateTime.Now} :: {Command} {Response.ResponseStatus}");
                 Helpers.PrintRuntimeStats();
+
                 if (Environment.DebugMode)
                     Helpers.PrintEnclosedInNewLines(Response.Content);
 

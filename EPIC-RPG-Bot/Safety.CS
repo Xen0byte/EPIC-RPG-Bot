@@ -36,7 +36,7 @@ namespace BOT
                 Console.WriteLine($"{DateTime.Now} :: EPIC GUARD {response.ResponseStatus}");
 
                 if (Environment.DebugMode)
-                    Helpers.PrintEnclosedInNewLines(response.Content);
+                    Helpers.PrintWithoutTrailingNewLines(response.Content);
             }
         }
 
