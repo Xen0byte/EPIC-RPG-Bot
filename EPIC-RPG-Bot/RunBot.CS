@@ -18,11 +18,13 @@ namespace BOT
             while (Utility.Runtime.Elapsed < TimeSpan.FromHours(ENV.RuntimeInHours))
             {
                 RPGWork.MakeRequest("RPG LADDER");
+                RPGHunt.MakeRequest();
             }
 
             Utility.Runtime.Stop();
         }
 
         // TODO: Put Config In External File
+        // TODO: Make Requests Modular and DRY
     }
 }
