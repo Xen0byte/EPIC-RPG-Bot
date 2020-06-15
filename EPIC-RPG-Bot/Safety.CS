@@ -16,6 +16,9 @@ namespace BOT
 
             if (lastMessage.Content.Contains("EPIC GUARD"))
             {
+                // TODO: Remove This And Make Bot Smarter
+                Environment.Exit(1);
+
                 var answers = new List<string> { "NORMIE FISH", "WOLF SKIN", "LIFE POTION", "ZOMBIE EYE", "COIN" };
                 var random = new Random();
                 var randomAnswer = answers[random.Next(answers.Count)];
