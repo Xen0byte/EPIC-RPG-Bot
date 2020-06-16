@@ -21,6 +21,7 @@ namespace BOT
                 RPGWork.MakeRequest("RPG LADDER");
                 Thread.Sleep(1000);
                 RPGHunt.MakeRequest();
+                Thread.Sleep(1000);
             }
 
             Utility.Runtime.Stop();
