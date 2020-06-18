@@ -1,5 +1,9 @@
+using NAudio.Utils;
+using NAudio.Wave;
 using System;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BOT
 {
@@ -33,6 +37,19 @@ namespace BOT
             Console.Write(Environment.NewLine);
             Console.Write(content);
             Console.Write(Environment.NewLine);
+        }
+
+        public static async void PlayAlert()
+        {
+            using var audioFile = new AudioFileReader("Assets" + Path.DirectorySeparatorChar + "Epic-Guard-Alert.MP3");
+            using var outputDevice = new WaveOutEvent();
+
+            outputDevice.Init(audioFile);
+            outputDevice.Play();
+
+            // Asynchronously Wait Until Playback Completes
+            if (outputDevice.PlaybackState == PlaybackState.Playing)
+                await Task.Delay(audioFile.TotalTime);
         }
     }
 }

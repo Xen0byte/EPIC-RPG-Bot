@@ -16,6 +16,8 @@ namespace BOT
 
             if (lastMessage.Content.Contains("EPIC GUARD"))
             {
+                Helpers.PlayAlert();
+
                 // TODO: Remove This And Make Bot Smarter
                 Environment.Exit(1);
 
