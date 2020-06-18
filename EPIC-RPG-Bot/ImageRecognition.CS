@@ -80,7 +80,7 @@ namespace BOT
 
         private bool IsNeedlePresentAtLocation(int[][] haystack, int[][] needle, Point point, int alreadyVerified)
         {
-            //we already know that "alreadyVerified" lines already match, so skip them
+            // We Already Know That "alreadyVerified" Lines Already Match, So Skip Them
             for (int y = alreadyVerified; y < needle.Length; ++y)
             {
                 if (!ContainSameElements(haystack[y + point.Y], point.X, needle[y], 0, needle.Length))
