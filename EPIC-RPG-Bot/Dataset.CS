@@ -17,14 +17,14 @@ namespace BOT
             };
         }
 
-        static readonly Item Apple = new Item("APPLE", "Apple.PNG");
-        static readonly Item Coin = new Item("COIN", "Coin.PNG");
-        static readonly Item EpicCoin = new Item("EPIC COIN", "Epic-Coin.PNG");
-        static readonly Item GoldenFish = new Item("GOLDEN FISH", "Golden-Fish.PNG");
-        static readonly Item LifePotion = new Item("LIFE POTION", "Life-Potion.PNG");
-        static readonly Item NormieFish = new Item("NORMIE FISH", "Normie-Fish.PNG");
-        static readonly Item WolfSkin = new Item("WOLF SKIN", "Wolf-Skin.PNG");
-        static readonly Item ZombieEye = new Item("ZOMBIE EYE", "Zombie-Eye.PNG");
+        public static readonly Item Apple       = new Item("APPLE",         "Apple.PNG");
+        public static readonly Item Coin        = new Item("COIN",          "Coin.PNG");
+        public static readonly Item EpicCoin    = new Item("EPIC COIN",     "Epic-Coin.PNG");
+        public static readonly Item GoldenFish  = new Item("GOLDEN FISH",   "Golden-Fish.PNG");
+        public static readonly Item LifePotion  = new Item("LIFE POTION",   "Life-Potion.PNG");
+        public static readonly Item NormieFish  = new Item("NORMIE FISH",   "Normie-Fish.PNG");
+        public static readonly Item WolfSkin    = new Item("WOLF SKIN",     "Wolf-Skin.PNG");
+        public static readonly Item ZombieEye   = new Item("ZOMBIE EYE",    "Zombie-Eye.PNG");
     }
 
     public class Item

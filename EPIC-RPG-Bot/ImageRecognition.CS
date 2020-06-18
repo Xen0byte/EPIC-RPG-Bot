@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace BOT
 {
-    class ImageRecognition
+    public class ImageRecognition
     {
         public Point? Find(Bitmap haystack, Bitmap needle)
         {

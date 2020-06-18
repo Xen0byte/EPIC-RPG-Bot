@@ -4,9 +4,9 @@ using System.Threading;
 
 namespace BOT
 {
-    class RunBot
+    public class RunBot
     {
-        static void Main()
+        public static void Main()
         {
             ENV.DebugMode = true;
             ENV.Host = "https://discord.com/api/v6/channels/708660683063033886/messages";

@@ -45,7 +45,7 @@ namespace BOT.Requests
                 if (ENV.DebugMode)
                     Helpers.PrintEnclosedInNewLines(Response.Content);
 
-                Safety.KeepOuttaJail();
+                PlayItSafe.KeepOuttaJail();
 
                 LastCallTime = DateTime.Now;
                 SecondsElapsed = 0;
