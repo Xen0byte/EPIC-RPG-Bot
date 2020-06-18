@@ -17,11 +17,11 @@
 	<!-- Use Double Wildcard Characters (**) To Navigate Recursively Through Folders -->
 	<ItemGroup>
 		<Content Include="Assets\Item-Dataset\40x40\*.PNG">
-			<Link>ASSETS\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<Link>Assets\%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Assets\Audio-Files\*.MP3">
-			<Link>ASSETS\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<Link>Assets\%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
