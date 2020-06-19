@@ -34,13 +34,13 @@ namespace BOT
 
                 if (ENV.DebugMode)
                     Console.WriteLine(Environment.NewLine + response.Content);
-            }
 
-            if (!Helpers.GetMessages(1)[0].Content.ToUpper().Contains("EVERYTHING SEEMS FINE"))
-            {
-                Helpers.PlayAlert();
-                Thread.Sleep(3000);
-                Environment.Exit(0);
+                if (!Helpers.GetMessages(1)[0].Content.ToUpper().Contains("EVERYTHING SEEMS FINE"))
+                {
+                    Helpers.PlayAlert();
+                    Thread.Sleep(3000);
+                    Environment.Exit(0);
+                }
             }
         }
     }
