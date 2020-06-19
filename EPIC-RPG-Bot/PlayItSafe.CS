@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Drawing;
+using System.Threading;
 
 namespace BOT
 {
@@ -21,7 +22,7 @@ namespace BOT
                 foreach (Item item in Dataset.ItemDataset)
                 {
                     var checker = new ImageRecognition();
-                    var point = checker.Find(new Bitmap("???"), item.Bitmap);
+                    var point = checker.Find(new Bitmap(lastMessage.Attachments[0].URL), item.Bitmap);
 
                     if (point != null) match = item;
                 }
@@ -29,6 +30,7 @@ namespace BOT
                 if (match == null)
                 {
                     Helpers.PlayAlert();
+                    Thread.Sleep(3000);
                     Environment.Exit(0);
                 } 
 
