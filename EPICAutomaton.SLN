@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPICAutomaton", "EPICAutoma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPICAutomatonML.Model", "EPICAutomatonML.Model\EPICAutomatonML.Model.CSPROJ", "{6D1F669D-002A-489D-B541-9DA650814A4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPICAutomatonML.ConsoleApp", "EPICAutomatonML.ConsoleApp\EPICAutomatonML.ConsoleApp.CSPROJ", "{0692FE02-9FD3-481A-A566-4BF013D550EB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{6D1F669D-002A-489D-B541-9DA650814A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D1F669D-002A-489D-B541-9DA650814A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D1F669D-002A-489D-B541-9DA650814A4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0692FE02-9FD3-481A-A566-4BF013D550EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0692FE02-9FD3-481A-A566-4BF013D550EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0692FE02-9FD3-481A-A566-4BF013D550EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0692FE02-9FD3-481A-A566-4BF013D550EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
