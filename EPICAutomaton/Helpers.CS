@@ -1,5 +1,6 @@
-using NAudio.Utils;
 using NAudio.Wave;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.IO;
 using System.Text;
@@ -9,6 +10,20 @@ namespace BOT
 {
     public static class Helpers
     {
+        public static Message[] GetMessages(int amount)
+        {
+            var client = new RestClient(ENV.Host);
+
+            var request = new RestRequest(Method.GET)
+                .AddParameter("limit", amount)
+                .AddHeader("Accept", "application/json")
+                .AddHeader("Authorization", Headers.Authorization);
+
+            var response = client.Execute(request);
+
+            return JsonConvert.DeserializeObject<Message[]>(response.Content);
+        }
+
         public static string RandomIntAsString()
         {
             Random random = new Random();

@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
+﻿using RestSharp;
 using System;
-using System.Drawing;
 using System.Threading;
 
 namespace BOT
@@ -10,65 +8,40 @@ namespace BOT
     {
         public static void KeepOuttaJail()
         {
-            var lastMessage = GetMessages(1)[0];
+            var lastMessage = Helpers.GetMessages(1)[0];
 
             if (ENV.DebugMode)
                 Console.Write(Environment.NewLine + ObjectDumper.Dump(lastMessage));
 
             if (lastMessage.Content.Contains("EPIC GUARD"))
             {
-                Item match = null;
+                var prediction = MachineLearning.PredictItemFromUri(lastMessage.Attachments[0].URL);
 
-                foreach (Item item in Dataset.ItemDataset)
-                {
-                    var checker = new ImageRecognition();
-                    var point = checker.Find(new Bitmap(lastMessage.Attachments[0].URL), item.Bitmap);
+                var JsonData = new { content = prediction, nonce = Helpers.RandomIntAsString(), tts = false };
 
-                    if (point != null) match = item;
-                }
+                var client = new RestClient(ENV.Host);
 
-                if (match == null)
-                {
-                    Helpers.PlayAlert();
-                    Thread.Sleep(3000);
-                    Environment.Exit(0);
-                } 
+                var request = new RestRequest(Method.POST)
+                    .AddHeader("Accept", "application/json")
+                    .AddHeader("Authorization", Headers.Authorization)
+                    .AddJsonBody(JsonData);
 
-                else
-                {
-                    var JsonData = new { content = match.Name, nonce = Helpers.RandomIntAsString(), tts = false };
+                Console.WriteLine(Environment.NewLine + $"{DateTime.Now} :: EPIC GUARD Start");
 
-                    var client = new RestClient(ENV.Host);
+                var response = client.Execute(request);
 
-                    var request = new RestRequest(Method.POST)
-                        .AddHeader("Accept", "application/json")
-                        .AddHeader("Authorization", Headers.Authorization)
-                        .AddJsonBody(JsonData);
+                Console.WriteLine($"{DateTime.Now} :: EPIC GUARD {response.ResponseStatus}");
 
-                    Console.WriteLine(Environment.NewLine + $"{DateTime.Now} :: EPIC GUARD Start");
-
-                    var response = client.Execute(request);
-
-                    Console.WriteLine($"{DateTime.Now} :: EPIC GUARD {response.ResponseStatus}");
-
-                    if (ENV.DebugMode)
-                        Console.WriteLine(Environment.NewLine + response.Content);
-                }
+                if (ENV.DebugMode)
+                    Console.WriteLine(Environment.NewLine + response.Content);
             }
-        }
 
-        private static Message[] GetMessages(int amount)
-        {
-            var client = new RestClient(ENV.Host);
-
-            var request = new RestRequest(Method.GET)
-                .AddParameter("limit", amount)
-                .AddHeader("Accept", "application/json")
-                .AddHeader("Authorization", Headers.Authorization);
-
-            var response = client.Execute(request);
-
-            return JsonConvert.DeserializeObject<Message[]>(response.Content);
+            if (!Helpers.GetMessages(1)[0].Content.ToUpper().Contains("EVERYTHING SEEMS FINE"))
+            {
+                Helpers.PlayAlert();
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+            }
         }
     }
 }
