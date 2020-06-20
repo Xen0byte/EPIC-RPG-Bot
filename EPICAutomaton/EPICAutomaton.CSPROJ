@@ -15,7 +15,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\EPICAutomatonML.Model\EPICAutomatonML.Model.CSPROJ" />
+		<ContentWithTargetPath Include="Assets\Audio-Files\Epic-Guard-Alert.MP3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>Epic-Guard-Alert.MP3</TargetPath>
+		</ContentWithTargetPath>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\EPICAutomatonML.Model\EPICAutomatonML.Model.CSPROJ" />
 	</ItemGroup>
 
 </Project>

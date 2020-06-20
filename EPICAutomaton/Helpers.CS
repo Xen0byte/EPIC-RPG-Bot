@@ -56,7 +56,7 @@ namespace BOT
 
         public static async void PlayAlert()
         {
-            using var audioFile = new AudioFileReader("Assets" + Path.DirectorySeparatorChar + "Epic-Guard-Alert.MP3");
+            using var audioFile = new AudioFileReader(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Epic-Guard-Alert.MP3");
             using var outputDevice = new WaveOutEvent();
 
             outputDevice.Init(audioFile);
