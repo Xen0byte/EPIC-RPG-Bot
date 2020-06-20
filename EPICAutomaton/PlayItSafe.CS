@@ -8,6 +8,8 @@ namespace BOT
     {
         public static void KeepOuttaJail()
         {
+            Thread.Sleep(3000);
+
             var lastMessage = Helpers.GetMessages(1)[0];
 
             if (ENV.DebugMode)
@@ -34,6 +36,8 @@ namespace BOT
 
                 if (ENV.DebugMode)
                     Console.WriteLine(Environment.NewLine + response.Content);
+
+                Thread.Sleep(3000);
 
                 if (!Helpers.GetMessages(1)[0].Content.ToUpper().Contains("EVERYTHING SEEMS FINE"))
                 {
