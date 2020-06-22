@@ -66,5 +66,17 @@ namespace BOT
             if (outputDevice.PlaybackState == PlaybackState.Playing)
                 await Task.Delay(audioFile.TotalTime);
         }
+
+        public static void PrintDisclaimer()
+        {
+            Console.WriteLine();
+            Console.WriteLine("          # # # # # # # # # # # # # # # # DISCLAIMER # # # # # # # # # # # # # # # #");
+            Console.WriteLine("          #                THIS BOT IS FOR RESEARCH PURPOSES ONLY.                 #");
+            Console.WriteLine("          #     USE IT AT YOUR OWN RISK! IF YOU GET BANNED IT'S NOT MY PROBLEM.    #");
+            Console.WriteLine("          #          IT CURRENTLY ONLY RUNS 'RPG LADDER' AND 'RPG HUNT'.           #");
+            Console.WriteLine("          # TO CHANGE THIS: FORK, CHANGE, BUILD. DON'T ASK FOR CHANGES OR UPDATES. #");
+            Console.WriteLine("          # # # # # # # # # # # # # # # # DISCLAIMER # # # # # # # # # # # # # # # #");
+            Console.WriteLine();
+        }
     }
 }

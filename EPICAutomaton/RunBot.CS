@@ -10,10 +10,12 @@ namespace BOT
         {
             ENV.DebugMode = true;
 
-            Console.Write("HOST: ");
+            Helpers.PrintDisclaimer();
+
+            Console.Write("Channel ID: ");
             ENV.Host = "https://discord.com/api/v6/channels/" + Console.ReadLine() + "/messages";
 
-            Console.Write("AUTH: ");
+            Console.Write("Authorization Header: ");
             Headers.Authorization = Console.ReadLine();
 
             Helpers.PrintDashes(100);
