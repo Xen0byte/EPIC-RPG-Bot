@@ -8,7 +8,7 @@ namespace BOT
     {
         public static void KeepOuttaJail()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             var lastMessage = Helpers.GetMessages(1)[0];
 
@@ -37,15 +37,21 @@ namespace BOT
                 if (ENV.DebugMode)
                     Console.WriteLine(Environment.NewLine + response.Content);
 
-                Thread.Sleep(3000);
+                Thread.Sleep(5000);
 
-                if (!Helpers.GetMessages(1)[0].Content.ToUpper().Contains("EVERYTHING SEEMS FINE"))
+                foreach (Message message in Helpers.GetMessages(5))
                 {
-                    Helpers.PlayAlert();
-                    Thread.Sleep(3000);
-                    Environment.Exit(0);
+                    if (!message.Content.ToUpper().Contains("EVERYTHING SEEMS FINE") || message.Content.ToUpper().Contains("IS NOW IN JAIL"))
+                        TerminateExecution();
                 }
             }
+        }
+
+        public static void TerminateExecution()
+        {
+            Helpers.PlayAlert();
+            Thread.Sleep(3000);
+            Environment.Exit(0);
         }
     }
 }
