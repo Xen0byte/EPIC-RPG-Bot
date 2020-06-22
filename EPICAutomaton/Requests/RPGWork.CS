@@ -7,7 +7,7 @@ namespace BOT.Requests
     public static class RPGWork
     {
         private static string Command;
-        private static readonly int CooldownInSeconds = 300 + Utility.CooldownBuffer;
+        private static readonly int CooldownInSeconds = 300;
 
         private static IRestResponse Response;
         private static DateTime LastCallTime;

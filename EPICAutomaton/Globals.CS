@@ -17,6 +17,5 @@ namespace BOT
     public static class Utility
     {
         public static Stopwatch Runtime = new Stopwatch();
-        public static int CooldownBuffer = 5;
     }
 }
